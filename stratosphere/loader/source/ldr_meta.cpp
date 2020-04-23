@@ -85,9 +85,9 @@ namespace ams::ldr {
             R_UNLESS(acid->magic == Acid::Magic, ldr::ResultInvalidMeta());
 
             /* Validate that the acid is for production if not development. */
-            if (!IsDevelopmentForAcidProductionCheck()) {
+            /* if (!IsDevelopmentForAcidProductionCheck()) {
                 R_UNLESS((acid->flags & Acid::AcidFlag_Production) != 0, ldr::ResultInvalidMeta());
-            }
+            } */
 
             /* Validate that the acid version is correct. */
             constexpr u8 MinimumValueForAcid209 = 14; /* TODO: What is the actual meaning of this value? */
@@ -122,7 +122,7 @@ namespace ams::ldr {
 
         Result ValidateAcidSignature(Meta *meta) {
             /* Loader did not check signatures prior to 10.0.0. */
-            if (hos::GetVersion() < hos::Version_10_0_0) {
+            /* if (hos::GetVersion() < hos::Version_10_0_0) */ {
                 meta->check_verification_data = false;
                 R_SUCCEED();
             }
